@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="style/bootstrap.css" />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Logo</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="admin.html"
+                >Admin panel</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">User-Panel</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="container my-5">
+      <!-- Users -->
+      <div class="user-wrapper">
+        <div class="d-flex gap-3 justify-content-center">
+          <h1>Users</h1>
+          <button
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+          >
+            Create User
+          </button>
+        </div>
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Actives</th>
+            </tr>
+          </thead>
+          <tbody id="userTable"></tbody>
+        </table>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards-wrapper mt-5">
+        <div class="d-flex gap-3 justify-content-center">
+          <h1>Cards</h1>
+          <button
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#createCardModal"
+          >
+            Create Card
+          </button>
+        </div>
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Img-Url</th>
+              <th>Actives</th>
+            </tr>
+          </thead>
+          <tbody id="cardTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- User-create-Modal -->
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="registerModalLabel">
+              Register-User
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="userCreateForm">
+              <label class="form-label" for="userName">Name:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="userName"
+                name="name"
+                required
+              />
+              <label class="form-label" for="userEmail">Email:</label>
+              <input
+                class="form-control mb-3"
+                type="email"
+                id="userEmail"
+                name="email"
+                required
+              />
+              <label class="form-label" for="userPass">Password:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="userPass"
+                name="pass"
+                required
+              />
+              <button
+                class="btn btn-success w-100"
+                type="submit"
+                data-bs-dismiss="modal"
+              >
+                Submit
+              </button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card-create-Modal -->
+    <div
+      class="modal fade"
+      id="createCardModal"
+      tabindex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="registerModalLabel">
+              Create-Card
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="cardCreateForm">
+              <div class="row gy-3">
+                <div class="col-7">
+                  <label for="cardTitle" class="form-label">Card-Title:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    id="cardTitle"
+                    required
+                  />
+                </div>
+                <div class="col-5">
+                  <label for="cardTitle" class="form-label"
+                    >Card-Category:</label
+                  >
+                  <select type="text" class="form-select" name="cardCategory">
+                    <option value="men-cloth">Men cloth</option>
+                    <option value="woman-cloth">Woman cloth</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="cardDesc" class="form-label"
+                    >Card-Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    name="description"
+                    id="cardDesc"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-md-4">
+                  <label for="cardPrice" class="form-label">Card-Price:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="price"
+                    id="cardPrice"
+                    required
+                  />
+                </div>
+                <div class="col-md-8">
+                  <label for="cardImgUrl" class="form-label"
+                    >Card-Img-URL:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="imgUrl"
+                    id="cardImgUrl"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <button  class="btn btn-success w-100">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
