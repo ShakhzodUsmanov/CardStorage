@@ -2,7 +2,9 @@ const userCreateForm = document.getElementById("userCreateForm");
 const cardCreateForm = document.getElementById("cardCreateForm");
 const userTable = document.getElementById("userTable");
 const cardTable = document.getElementById("cardTable");
-const api = "https://crudcrud.com/api/0afda79c8978402b82849fc22fcd39c6";
+const api = "https://crudcrud.com/api/6f2c09b313244ef3bd57405bde59c4cc";
+
+const updateCardModal = document.getElementById("createCardModal")
 
 userCreateForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -31,6 +33,20 @@ cardCreateForm.addEventListener("submit", (e) => {
   cardCreateForm.reset();
 });
 
+// cardUpdateForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+//   const formData = new FormData(cardCreateForm);
+
+//   const data = {};
+//   formData.forEach((value, key) => {
+//     data[key] = value;
+//   });
+
+//   CreateCard(data);
+//   cardCreateForm.reset();
+// });
+
 async function CreateUser(userData) {
   userData.cart = [];
   console.log(userData);
@@ -58,7 +74,7 @@ async function CreateCard(cardData) {
     body: JSON.stringify(cardData),
   });
 
-  fetchCards()
+  fetchCards();
 }
 
 async function fetchUsers() {
@@ -112,6 +128,7 @@ function displayUser(users) {
 }
 
 function displayCard(cards) {
+  cardTable.innerHTML = ''
   cards.forEach((card, i) => {
     const tr = document.createElement("tr");
     const tdN = document.createElement("th");
@@ -121,7 +138,7 @@ function displayCard(cards) {
     const tdImgUrl = document.createElement("td");
     const tdActives = document.createElement("td");
 
-    const img = document.createElement('img')
+    const img = document.createElement("img");
 
     const deleteBtn = document.createElement("button");
     const updateBtn = document.createElement("button");
@@ -132,14 +149,17 @@ function displayCard(cards) {
     tdPrice.innerText = card.price;
 
     img.src = card.imgUrl;
-    img.className = "w-25"
-    tdImgUrl.appendChild(img)
+    img.className = "w-25";
+    tdImgUrl.appendChild(img);
 
     deleteBtn.className = "btn btn-danger w-50";
     updateBtn.className = "btn btn-warning w-50";
 
     deleteBtn.innerHTML = "Delete";
     updateBtn.innerHTML = "Update";
+    deleteBtn.id = card._id
+    deleteBtn.onclick = deleteCard
+    updateBtn.onclick = openModal
 
     tdActives.appendChild(deleteBtn);
     tdActives.appendChild(updateBtn);
@@ -157,5 +177,18 @@ function displayCard(cards) {
   });
 }
 
+async function deleteCard() {
+  await fetch(`${api}/cards/${this.id}`, {
+    method: "DELETE",
+  });
+  fetchCards();
+}
+
+function openModal() {
+  console.log('open modal');
+  const myModal = new bootstrap.Modal(updateCardModal);
+  myModal.show();
+}
+
 fetchUsers();
-fetchCards()
+fetchCards();

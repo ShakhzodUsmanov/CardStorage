@@ -243,6 +243,92 @@
       </div>
     </div>
 
+    <!-- Card-update-Modal -->
+    <div
+      class="modal fade"
+      id="updateCardModal"
+      tabindex="-1"
+      aria-labelledby="updateCardModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="updateCardModal">
+              Update-Card
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="cardUpdateForm">
+              <div class="row gy-3">
+                <div class="col-7">
+                  <label for="cardTitle" class="form-label">Card-Title:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    id="cardTitle"
+                    required
+                  />
+                </div>
+                <div class="col-5">
+                  <label for="cardTitle" class="form-label"
+                    >Card-Category:</label
+                  >
+                  <select type="text" class="form-select" name="cardCategory">
+                    <option value="men-cloth">Men cloth</option>
+                    <option value="woman-cloth">Woman cloth</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="cardDesc" class="form-label"
+                    >Card-Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    name="description"
+                    id="cardDesc"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-md-4">
+                  <label for="cardPrice" class="form-label">Card-Price:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="price"
+                    id="cardPrice"
+                    required
+                  />
+                </div>
+                <div class="col-md-8">
+                  <label for="cardImgUrl" class="form-label"
+                    >Card-Img-URL:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="imgUrl"
+                    id="cardImgUrl"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <button  class="btn btn-success w-100">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/admin.js"></script>
     <script src="js/bootstrap.js"></script>
   </body>
