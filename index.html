@@ -10,87 +10,175 @@
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
         <a class="navbar-brand" href="index.html">Logo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="admin.html">Admin</a>
             </li>
-           
-
           </ul>
 
           <form class="d-flex mx-auto mb-2 mb-lg-0" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
           </form>
 
           <div class="d-flex gap-3">
-            <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</div>
-            <div class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</div>
+            <div
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </div>
+            <div
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+            >
+              Register
+            </div>
           </div>
-
-
         </div>
       </div>
     </nav>
 
-
-<!-- Modal Login -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" id="loginForm">
-          <label class="form-label" for="email">Email:</label>
-          <input class="form-control mb-3" type="email" id="email" name="email">
-          <label class="form-label" for="pass">Password:</label>
-          <input class="form-control mb-3" type="text" id="pass" name="pass">
-          <button class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </form>
+    <div class="container">
+      <div class="card-grid mt-5">
+        <h1 class="display-1 text-center">Card Storage</h1>
+        <div class="row mt-4" id="card-grid"></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Modal Register -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" id="registerForm">
-          <label class="form-label" for="name">Name:</label>
-          <input class="form-control mb-3" type="text" id="name" name="name">
-          <label class="form-label" for="email">Email:</label>
-          <input class="form-control mb-3" type="email" id="email" name="email">
-          <label class="form-label" for="pass">Password:</label>
-          <input class="form-control mb-3" type="text" id="pass" name="pass">
-          <button class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </form>
+    <!-- Modal Login -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="loginForm">
+              <label class="form-label" for="email">Email:</label>
+              <input
+                class="form-control mb-3"
+                type="email"
+                id="email"
+                name="email"
+              />
+              <label class="form-label" for="pass">Password:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="pass"
+                name="pass"
+              />
+              <button class="btn btn-success">Submit</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
+    <!-- Modal Register -->
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="registerForm">
+              <label class="form-label" for="name">Name:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="name"
+                name="name"
+              />
+              <label class="form-label" for="email">Email:</label>
+              <input
+                class="form-control mb-3"
+                type="email"
+                id="email"
+                name="email"
+              />
+              <label class="form-label" for="pass">Password:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="pass"
+                name="pass"
+              />
+              <button class="btn btn-success">Submit</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/app.js"></script>
     <script src="js/bootstrap.js"></script>

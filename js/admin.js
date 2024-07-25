@@ -69,8 +69,8 @@ async function fetchUsers() {
 
 async function fetchCards() {
   const data = await fetch(`${api}/cards`);
-  const usersData = await data.json();
-  displayCard(usersData);
+  const cardData = await data.json();
+  displayCard(cardData);
 }
 
 function displayUser(users) {
