@@ -150,7 +150,6 @@
               >
                 Submit
               </button>
-              
             </form>
           </div>
         </div>
@@ -162,15 +161,13 @@
       class="modal fade"
       id="createCardModal"
       tabindex="-1"
-      aria-labelledby="registerModalLabel"
+      aria-labelledby="createCardModal"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="registerModalLabel">
-              Create-Card
-            </h1>
+            <h1 class="modal-title fs-5" id="createCardModal">Create-Card</h1>
             <button
               type="button"
               class="btn-close"
@@ -234,9 +231,67 @@
                   />
                 </div>
                 <div class="col-12">
-                  <button  class="btn btn-success w-100">Add</button>
+                  <button class="btn btn-success w-100">Add</button>
                 </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User-update-Modal -->
+    <div
+      class="modal fade"
+      id="updateUserModal"
+      tabindex="-1"
+      aria-labelledby="updateUserModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="updateUserModal">Update-Card</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="userUpdateForm">
+              <label class="form-label" for="userName">Name:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="userName"
+                name="name"
+                required
+              />
+              <label class="form-label" for="userEmail">Email:</label>
+              <input
+                class="form-control mb-3"
+                type="email"
+                id="userEmail"
+                name="email"
+                required
+              />
+              <label class="form-label" for="userPass">Password:</label>
+              <input
+                class="form-control mb-3"
+                type="text"
+                id="userPass"
+                name="pass"
+                required
+              />
+              <button
+                class="btn btn-success w-100"
+                type="submit"
+                data-bs-dismiss="modal"
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
@@ -254,9 +309,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="updateCardModal">
-              Update-Card
-            </h1>
+            <h1 class="modal-title fs-5" id="updateCardModal">Update-Card</h1>
             <button
               type="button"
               class="btn-close"
@@ -320,7 +373,9 @@
                   />
                 </div>
                 <div class="col-12">
-                  <button  class="btn btn-success w-100">Add</button>
+                  <button class="btn btn-success w-100" data-bs-dismiss="modal">
+                    Add
+                  </button>
                 </div>
               </div>
             </form>

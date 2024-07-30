@@ -2,9 +2,12 @@ const userCreateForm = document.getElementById("userCreateForm");
 const cardCreateForm = document.getElementById("cardCreateForm");
 const userTable = document.getElementById("userTable");
 const cardTable = document.getElementById("cardTable");
-const api = "https://crudcrud.com/api/6f2c09b313244ef3bd57405bde59c4cc";
+const api = "https://crudcrud.com/api/65d187174c0d4e458bdc2bfba854a86f";
 
-const updateCardModal = document.getElementById("createCardModal")
+const updateCardModal = document.getElementById("updateCardModal");
+const cardUpdateForm = document.getElementById("cardUpdateForm");
+const updateUserModal = document.getElementById("updateUserModal");
+const userUpdateForm = document.getElementById("userUpdateForm");
 
 userCreateForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -33,20 +36,6 @@ cardCreateForm.addEventListener("submit", (e) => {
   cardCreateForm.reset();
 });
 
-// cardUpdateForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-
-//   const formData = new FormData(cardCreateForm);
-
-//   const data = {};
-//   formData.forEach((value, key) => {
-//     data[key] = value;
-//   });
-
-//   CreateCard(data);
-//   cardCreateForm.reset();
-// });
-
 async function CreateUser(userData) {
   userData.cart = [];
   console.log(userData);
@@ -63,7 +52,6 @@ async function CreateUser(userData) {
 }
 
 async function CreateCard(cardData) {
-  cardData.cart = [];
   console.log(cardData);
 
   await fetch(`${api}/cards`, {
@@ -90,6 +78,7 @@ async function fetchCards() {
 }
 
 function displayUser(users) {
+  userTable.innerHTML = "";
   users.forEach((user, i) => {
     const tr = document.createElement("tr");
     const tdN = document.createElement("th");
@@ -111,6 +100,10 @@ function displayUser(users) {
 
     deleteBtn.innerHTML = "Delete";
     updateBtn.innerHTML = "Update";
+    deleteBtn.id = user._id;
+    updateBtn.id = user._id;
+    deleteBtn.onclick = deleteUser;
+    updateBtn.onclick = openUserUpdateModal;
 
     tdActives.appendChild(deleteBtn);
     tdActives.appendChild(updateBtn);
@@ -128,7 +121,7 @@ function displayUser(users) {
 }
 
 function displayCard(cards) {
-  cardTable.innerHTML = ''
+  cardTable.innerHTML = "";
   cards.forEach((card, i) => {
     const tr = document.createElement("tr");
     const tdN = document.createElement("th");
@@ -157,9 +150,10 @@ function displayCard(cards) {
 
     deleteBtn.innerHTML = "Delete";
     updateBtn.innerHTML = "Update";
-    deleteBtn.id = card._id
-    deleteBtn.onclick = deleteCard
-    updateBtn.onclick = openModal
+    deleteBtn.id = card._id;
+    updateBtn.id = card._id;
+    deleteBtn.onclick = deleteCard;
+    updateBtn.onclick = openCardUpdateModal;
 
     tdActives.appendChild(deleteBtn);
     tdActives.appendChild(updateBtn);
@@ -184,10 +178,65 @@ async function deleteCard() {
   fetchCards();
 }
 
-function openModal() {
-  console.log('open modal');
+async function deleteUser() {
+  await fetch(`${api}/users/${this.id}`, {
+    method: "DELETE",
+  });
+  fetchUsers();
+}
+
+function openUserUpdateModal() {
+  const myModal = new bootstrap.Modal(updateUserModal);
+  myModal.show();
+
+  updateUserModal.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(userUpdateForm);
+
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    await fetch(`${api}/users/${this.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log("update");
+    userUpdateForm.reset();
+    fetchUsers();
+  });
+}
+
+function openCardUpdateModal() {
   const myModal = new bootstrap.Modal(updateCardModal);
   myModal.show();
+
+  updateCardModal.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(cardUpdateForm);
+
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    await fetch(`${api}/cards/${this.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log("update");
+    cardUpdateForm.reset();
+    fetchCards();;
+  });
 }
 
 fetchUsers();
